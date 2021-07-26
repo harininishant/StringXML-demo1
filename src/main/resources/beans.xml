@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean name="gasolineEngine" class ="com.example.demo1.GasolineEngine"></bean>
+    <bean name="electricEngine" class="com.example.demo1.ElectricEngine"></bean>
+    <bean name="disielEngine" class="com.example.demo1.DisielEngine"></bean>
+    <bean name="car" class="com.example.demo1.Car">
+      <constructor-arg name="engine" ref="electricEngine"></constructor-arg>
+    </bean>
+    <bean name="course" class="com.example.demo1.Course">
+        <property name="courseID" value="11"></property>
+        <property name="courseName" value="Java"></property>
+    </bean>
+    <bean name="format" factory-method="getInstance" class="java.text.NumberFormat"></bean>
+<bean init-method="init" destroy-method="release"  name="student" class="com.example.demo1.Student">
+    <constructor-arg name="studentID" value="2000000"></constructor-arg>
+    <constructor-arg name="name" value="harini"></constructor-arg>
+    <constructor-arg name="course" ref="course"></constructor-arg>
+    <constructor-arg name="format" ref="format"></constructor-arg>
+    <property name="hobbies">
+        <list>
+            <value>reading</value>
+            <value>watching</value>
+        </list>
+    </property>
+    <property name="skillMap">
+        <map>
+            <entry key = "C++" value="Beginner"></entry>
+            <entry key="Java" value="Advance"></entry>
+            <entry key = "Spring" value="Intermediate"></entry>
+        </map>
+    </property>
+</bean>
+
+</beans>
+
+
